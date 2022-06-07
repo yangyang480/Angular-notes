@@ -1,0 +1,8 @@
+<img [src]="postImg" (click)="imgSelected.emit(postImg)"> 
+<!-- we will change the imgURL to postImg, we still need to tell angular this property from the other component, we do that in the post.component class -->
+<!-- adding click even listener and passing the postImg to it -->
+
+<!-- content projection: passing content from parent to child component.
+1) add nasted html tags inside of <app-post> tag in app.html
+2) render the content with <ng-content> tag inside of child component which is post.html -->
+<ng-content></ng-content>

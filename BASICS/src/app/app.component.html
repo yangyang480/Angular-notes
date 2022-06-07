@@ -1,0 +1,49 @@
+<!-- Event binding for changing the image -->
+<!-- adding events listener called keyup, event binding use (), property binding use [] -->
+<input (keyup)="changeImage($event)" [value]="imgURL">
+
+<!-- we are using property binding to bind the dynamic imgURL from class to the html page -->
+<!-- <img [src]="imgURL">  -->
+<!-- we are going to let date flow between components, we will cut this img and paste it to post.html -->
+
+<!-- we are using the selector from the post.component.class and using property binding to set the value -->
+<!-- we add imgSelected to it and passing the logImg method, we need create the logImg method in app.class-->
+<app-post *ngFor="let image of images; let i = index" [postImg]="imgURL" (imgSelected)="logImg($event)">
+    <p>{{ i }} Some caption by using content projection </p>
+</app-post>
+
+<!-- we can also use method in the {{ }} -->
+<!-- we are using pipe and  titlecase to upper every words, we created properties in app.ts class already -->
+<p>Hello, {{ name | titlecase }}</p> 
+<p>Hello, {{ title.toUpperCase() }}!</p>
+<p>Hello, {{ getName() }}!</p> 
+<p>{{ 15 + 15 }}!</p>
+<p>{{ currentDate | date: 'short' }}</p>
+<p>{{ cost | currency: 'JPY' }}</p>
+<!-- two decimal at least 5 at most -->
+<p>{{ temperature | number: '1.2-5' }}</p>
+<!-- JsonPipe is for debugging purpose, it will show the properties in the browser -->
+<pre>{{ pizza | json }}</pre>
+
+<hr>
+
+<!-- 2 Directives: ngClass directives, for binding classes dynamically to an element. 1) define property in ts
+    2) create button and when click it will change color
+    3) define the css as after click the button -->
+<button (click) = "blueClass = !blueClass"
+[ngClass]="{ blue: blueClass }"
+[ngStyle]="{ 'fontSize.px': fontSize }">Change</button>
+
+<!-- ngStyle directives: binding css's property through style attributes. 
+    1) create fontSize property in ts file
+    2) binding ngStyle in the button tags-->
+
+<!-- ng-template will hide the content -->
+<ng-template>
+    <p>Button is blue.</p>
+</ng-template>
+
+<!-- Structural directive: ngIf directive & ngfor directive: if the button is blue then show the message -->
+<!-- ngIf directive has two ways to write: <ng-template [ngIf]="blueClass">; <p *ngIf="blueClass">Button is blue.</p> -->
+<!-- ngFor * "let image of images" create image varible, create variable i as index -->
+<p *ngIf="blueClass">Button is blue</p>

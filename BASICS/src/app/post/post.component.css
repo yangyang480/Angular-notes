@@ -1,0 +1,9 @@
+img {
+    width: 200px;
+    height: 200px;
+}
+
+/* :host is how we define css on app.html in child component css file */
+:host {
+    font-size: 24px;
+}
